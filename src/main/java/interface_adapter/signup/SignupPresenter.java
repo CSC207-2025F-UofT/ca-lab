@@ -7,7 +7,7 @@ import use_case.signup.SignupOutputBoundary;
 import use_case.signup.SignupOutputData;
 
 /**
- * The Presenter for the Signup Use Case.
+ * The Presenter for the Signup Use Case
  */
 public class SignupPresenter implements SignupOutputBoundary {
 
