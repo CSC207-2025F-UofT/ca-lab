@@ -27,20 +27,14 @@ public class LogoutPresenter implements LogoutOutputBoundary {
 
     @Override
     public void prepareSuccessView(LogoutOutputData response) {
-        // TODO: have prepareSuccessView update the LoggedInState
-        // 1. get the LoggedInState out of the appropriate View Model,
+        // Update the logged in state
         final LoggedInState loggedInState = loggedInViewModel.getState();
-        // 2. set the username in the state to the empty string
         loggedInState.setUsername("");
-        // 3. firePropertyChanged so that the View that is listening is updated.
         loggedInViewModel.firePropertyChange();
 
-        // TODO: have prepareSuccessView update the LoginState
-        // 1. get the LoginState out of the appropriate View Model,
+        // Update the login state
         final LoginState loginState = loginViewModel.getState();
-        // 2. set the username in the state to be the username of the user that just logged out,
         loginState.setUsername(viewManagerModel.getViewName());
-        // 3. firePropertyChanged so that the View that is listening is updated.
         loginViewModel.firePropertyChange();
 
         // This code tells the View Manager to switch to the LoginView.
