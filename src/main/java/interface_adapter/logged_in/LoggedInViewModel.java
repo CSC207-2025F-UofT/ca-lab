@@ -12,4 +12,6 @@ public class LoggedInViewModel extends ViewModel<LoggedInState> {
         setState(new LoggedInState());
     }
 
+    public void firePropertyChanged() {
+    }
 }
