@@ -21,7 +21,7 @@ public class LogoutInteractor implements LogoutInputBoundary {
         // * instantiate the `LogoutOutputData`, which needs to contain the username.
         // * tell the presenter to prepare a success view.
         String a = userDataAccessObject.getCurrentUsername();
-        userDataAccessObject.setCurrentUsername("");
+        userDataAccessObject.setCurrentUsername(null);
         LogoutOutputData logOut = new LogoutOutputData(a);
         logoutPresenter.prepareSuccessView(logOut);
     }
