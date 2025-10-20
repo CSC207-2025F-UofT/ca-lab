@@ -15,6 +15,7 @@ public class LogoutInteractor implements LogoutInputBoundary {
 
     @Override
     public void execute() {
+
         String username = userDataAccessObject.getCurrentUsername();
         userDataAccessObject.setCurrentUsername(null);//set current name to null
         LogoutOutputData outputData = new LogoutOutputData(username);
