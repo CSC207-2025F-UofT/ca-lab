@@ -11,7 +11,7 @@ Your demo should be similar to the below example:
 
 ![](images/sample-logout.gif)
 
----
+---[]()
 
 ## Task 0: Fork this repo on GitHub
 **To get started, one team member should fork this repo on GitHub and share it with the team.
