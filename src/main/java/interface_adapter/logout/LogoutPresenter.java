@@ -1,7 +1,9 @@
 package interface_adapter.logout;
 
 import interface_adapter.ViewManagerModel;
+import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
+import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginViewModel;
 import use_case.logout.LogoutOutputBoundary;
 import use_case.logout.LogoutOutputData;
@@ -25,17 +27,30 @@ public class LogoutPresenter implements LogoutOutputBoundary {
 
     @Override
     public void prepareSuccessView(LogoutOutputData response) {
-        // clear password and error in logged-in view
-        loggedInViewModel.getState().setPassword("");
-        loggedInViewModel.getState().setPasswordError(null);
-        loggedInViewModel.firePropertyChange("password");
 
-        // reset login view to empty username/password and clear errors
-        loginViewModel.getState().setUsername("");
-        loginViewModel.getState().setPassword("");
+        // We need to switch to the login view, which should have
+        // an empty username and password.
+
+        // We also need to set the username in the LoggedInState to
+        // the empty string.
+
+        // 1. get the LoggedInState out of the appropriate View Model,
+        // 2. set the username in the state to the empty string
+        // 3. firePropertyChanged so that the View that is listening is updated.
+        final LoggedInState loggedInState = loggedInViewModel.getState();
+        String name = loggedInState.getUsername();
+        loggedInState.setUsername("");
+        loggedInViewModel.firePropertyChange();
+
+        // 1. get the LoginState out of the appropriate View Model,
+        // 2. set the username in the state to be the username of the user that just logged out,
+        // 3. firePropertyChanged so that the View that is listening is updated.
+        final LoginState loginState = loginViewModel.getState();
+        loginState.setUsername(name);
         loginViewModel.firePropertyChange();
 
-        // keep these lines exactly
+
+        // This code tells the View Manager to switch to the LoginView.
         this.viewManagerModel.setState(loginViewModel.getViewName());
         this.viewManagerModel.firePropertyChange();
     }
