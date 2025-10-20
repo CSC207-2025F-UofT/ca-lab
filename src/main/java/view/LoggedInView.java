@@ -108,8 +108,12 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
      * @param evt the ActionEvent to react to
      */
     public void actionPerformed(ActionEvent evt) {
-        // TODO: execute the logout use case through the Controller
-        System.out.println("Click " + evt.getActionCommand());
+        // TODO: execute the logout use case through the Controller (done)
+        if (evt.getSource().equals(logOut)) {
+            System.out.println("Click " + evt.getActionCommand());
+
+            logoutController.execute();
+        }
     }
 
     @Override
@@ -140,6 +144,7 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
     }
 
     public void setLogoutController(LogoutController logoutController) {
-        // TODO: save the logout controller in the instance variable.
+        // TODO: save the logout controller in the instance variable. (done)
+        this.logoutController = logoutController;
     }
 }
