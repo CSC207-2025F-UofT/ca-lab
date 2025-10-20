@@ -93,7 +93,7 @@ The TODOs are summarized below (by file) to help your team decide how to split t
 ---
 
 - `Main.java` (tip: look at how other use cases have been added)
-    -[ ] TODO: add the logout use case to the app
+    -[X] TODO: add the logout use case to the app
   
 ---
 
