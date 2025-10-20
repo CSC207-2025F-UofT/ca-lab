@@ -23,7 +23,7 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
     private final LoggedInViewModel loggedInViewModel;
     private final JLabel passwordErrorField = new JLabel();
     private ChangePasswordController changePasswordController = null;
-    private LogoutController logoutController;
+    private LogoutController logoutController = null;
 
     private final JLabel username;
 
@@ -109,7 +109,16 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
      */
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
+
+        // TODO: execute the logout use case through the Controller
+        if (evt.getSource().equals(logOut)) {
+            //do something here
+            logoutController.execute(
+                    //
+            );
+        }
     }
+
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
@@ -139,6 +148,6 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
     }
 
     public void setLogoutController(LogoutController logoutController) {
-        // TODO: save the logout controller in the instance variable.
+        this.logoutController = logoutController;
     }
 }
