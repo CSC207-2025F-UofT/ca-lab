@@ -1,6 +1,7 @@
 package interface_adapter.logout;
 
 import interface_adapter.ViewManagerModel;
+import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.login.LoginViewModel;
 import use_case.logout.LogoutOutputBoundary;
@@ -19,6 +20,9 @@ public class LogoutPresenter implements LogoutOutputBoundary {
                           LoggedInViewModel loggedInViewModel,
                            LoginViewModel loginViewModel) {
         // TODO: assign to the three instance variables.
+        this.viewManagerModel = viewManagerModel;
+        this.loginViewModel = loginViewModel;
+        this.loggedInViewModel = loggedInViewModel;
     }
 
     @Override
@@ -33,6 +37,7 @@ public class LogoutPresenter implements LogoutOutputBoundary {
         // 1. get the LoggedInState out of the appropriate View Model,
         // 2. set the username in the state to the empty string
         // 3. firePropertyChanged so that the View that is listening is updated.
+        LoggedInViewModel
 
         // TODO: have prepareSuccessView update the LoginState
         // 1. get the LoginState out of the appropriate View Model,
