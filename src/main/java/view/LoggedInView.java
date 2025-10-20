@@ -3,6 +3,7 @@ package view;
 import interface_adapter.logged_in.ChangePasswordController;
 import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
+import interface_adapter.login.LoginState;
 import interface_adapter.logout.LogoutController;
 
 import javax.swing.*;
@@ -110,6 +111,10 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
     public void actionPerformed(ActionEvent evt) {
         // TODO: execute the logout use case through the Controller
         System.out.println("Click " + evt.getActionCommand());
+        if (evt.getSource().equals(logOut)) {
+            final LoggedInState currentState = loggedInViewModel.getState();
+            logoutController.execute();
+        }
     }
 
     @Override
@@ -140,6 +145,6 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
     }
 
     public void setLogoutController(LogoutController logoutController) {
-        // TODO: save the logout controller in the instance variable.
+        this.logoutController = logoutController;
     }
 }
