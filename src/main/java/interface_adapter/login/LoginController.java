@@ -16,6 +16,7 @@ public class LoginController {
 
     /**
      * Executes the Login Use Case.
+     * 
      * @param username the username of the user logging in
      * @param password the password of the user logging in
      */
