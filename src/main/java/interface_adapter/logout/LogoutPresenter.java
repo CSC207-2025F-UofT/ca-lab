@@ -1,6 +1,7 @@
 package interface_adapter.logout;
 //test
 import interface_adapter.ViewManagerModel;
+import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
 import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginViewModel;
@@ -35,11 +36,11 @@ public class LogoutPresenter implements LogoutOutputBoundary {
 
         // TODO: have prepareSuccessView update the LoggedInState
         // 1. get the LoggedInState out of the appropriate View Model,
-        final LoginState loggedInState = loginViewModel.getState();
+        final LoggedInState loggedInState = loggedInViewModel.getState();
         // 2. set the username in the state to the empty string
         loggedInState.setUsername("");
         // 3. firePropertyChanged so that the View that is listening is updated.
-        loginViewModel.firePropertyChange();
+        loggedInViewModel.firePropertyChange();
 
 
         // TODO: have prepareSuccessView update the LoginState
