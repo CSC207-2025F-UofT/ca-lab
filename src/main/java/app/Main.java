@@ -12,7 +12,8 @@ public class Main {
                 .addSignupUseCase()
                 .addLoginUseCase()
                 .addChangePasswordUseCase()
-                .build();
+                .addLogoutUseCase()
+                .build()
 
         application.pack();
         application.setLocationRelativeTo(null);
