@@ -19,6 +19,9 @@ public class LogoutPresenter implements LogoutOutputBoundary {
                           LoggedInViewModel loggedInViewModel,
                            LoginViewModel loginViewModel) {
         // TODO: assign to the three instance variables.
+        this.viewManagerModel = viewManagerModel;
+        this.loggedInViewModel = loggedInViewModel;
+        this.loginViewModel = loginViewModel;
     }
 
     @Override
