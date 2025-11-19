@@ -5,6 +5,7 @@ import use_case.signup.SignupInputData;
 
 /**
  * Controller for the Signup Use Case.
+ * Register Their name(First Name and Last Name) and Username and Password
  */
 public class SignupController {
 
@@ -16,13 +17,14 @@ public class SignupController {
 
     /**
      * Executes the Signup Use Case.
+     * @param firstname the First Name
+     * @param lastname the Last Name
      * @param username the username to sign up
      * @param password1 the password
      * @param password2 the password repeated
      */
-    public void execute(String username, String password1, String password2) {
-        final SignupInputData signupInputData = new SignupInputData(
-                username, password1, password2);
+    public void execute(String firstname, String lastname, String username, String password1, String password2) {
+        final SignupInputData signupInputData = new SignupInputData(firstname, lastname, username, password1, password2);
 
         userSignupUseCaseInteractor.execute(signupInputData);
     }

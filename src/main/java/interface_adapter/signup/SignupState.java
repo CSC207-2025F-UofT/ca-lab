@@ -4,12 +4,26 @@ package interface_adapter.signup;
  * The state for the Signup View Model.
  */
 public class SignupState {
+    private String firstname = "";
+    private String firstnameError = "";
+    private String lastname = "";
+    private String lastnameError = "";
     private String username = "";
-    private String usernameError;
+    private String usernameError = "";
     private String password = "";
-    private String passwordError;
+    private String passwordError = "";
     private String repeatPassword = "";
-    private String repeatPasswordError;
+    private String repeatPasswordError = "";
+
+    // --- Getters ---
+    public String getFirstname() {
+        return firstname;
+    }
+    public String getFirstnameError() {return firstnameError;}
+
+    public String getLastname() {return lastname;}
+
+    public String getLastnameError() {return lastnameError;}
 
     public String getUsername() {
         return username;
@@ -34,6 +48,16 @@ public class SignupState {
     public String getRepeatPasswordError() {
         return repeatPasswordError;
     }
+
+    // --- Setters ---
+
+    public void setFirstname(String firstname) {this.firstname = firstname;}
+
+    public void setFirstnameError(String firstnameError) {this.firstnameError = firstnameError;}
+
+    public void setLastname(String lastname) {this.lastname = lastname;}
+
+    public void setLastnameError(String lastnameError) {this.lastnameError = lastnameError;}
 
     public void setUsername(String username) {
         this.username = username;
@@ -62,7 +86,9 @@ public class SignupState {
     @Override
     public String toString() {
         return "SignupState{"
-                + "username='" + username + '\''
+                + "firstname='" + firstname + '\''
+                + ", lastname='" + lastname + '\''
+                + ", username='" + username + '\''
                 + ", password='" + password + '\''
                 + ", repeatPassword='" + repeatPassword + '\''
                 + '}';

@@ -1,9 +1,11 @@
-package use_case.login;
+package use_case.manage_application;
+
+import use_case.login.LoginInputData;
 
 /**
  * Input Boundary for actions which are related to logging in.
  */
-public interface LoginInputBoundary {
+public interface ManageApplicationUserDataAccessInterface {
 
     /**
      * Executes the login use case.

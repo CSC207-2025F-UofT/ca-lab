@@ -9,6 +9,7 @@ import use_case.change_password.ChangePasswordUserDataAccessInterface;
 import use_case.login.LoginUserDataAccessInterface;
 import use_case.logout.LogoutUserDataAccessInterface;
 import use_case.signup.SignupUserDataAccessInterface;
+import use_case.submit_application.SubmitUserDataAccessInterface;
 
 import java.io.IOException;
 
@@ -18,7 +19,9 @@ import java.io.IOException;
 public class DBUserDataAccessObject implements SignupUserDataAccessInterface,
                                                LoginUserDataAccessInterface,
                                                ChangePasswordUserDataAccessInterface,
-                                               LogoutUserDataAccessInterface {
+                                               LogoutUserDataAccessInterface,
+                                               SubmitUserDataAccessInterface {
+
     private static final int SUCCESS_CODE = 200;
     private static final String CONTENT_TYPE_LABEL = "Content-Type";
     private static final String CONTENT_TYPE_JSON = "application/json";
@@ -52,7 +55,7 @@ public class DBUserDataAccessObject implements SignupUserDataAccessInterface,
                 final String name = userJSONObject.getString(USERNAME);
                 final String password = userJSONObject.getString(PASSWORD);
 
-                return userFactory.create(name, password);
+                return userFactory.create("visitor", name, password);
             }
             else {
                 throw new RuntimeException(responseBody.getString(MESSAGE));
