@@ -11,6 +11,7 @@ import interface_adapter.login.LoginPresenter;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.logout.LogoutController;
 import interface_adapter.logout.LogoutPresenter;
+import interface_adapter.manage_application.ManageApplicationViewModel;
 import interface_adapter.signup.SignupController;
 import interface_adapter.signup.SignupPresenter;
 import interface_adapter.signup.SignupViewModel;
@@ -26,10 +27,7 @@ import use_case.logout.LogoutOutputBoundary;
 import use_case.signup.SignupInputBoundary;
 import use_case.signup.SignupInteractor;
 import use_case.signup.SignupOutputBoundary;
-import view.LoggedInView;
-import view.LoginView;
-import view.SignupView;
-import view.ViewManager;
+import view.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,6 +48,8 @@ public class AppBuilder {
     // DAO version using a shared external database
     // final DBUserDataAccessObject userDataAccessObject = new DBUserDataAccessObject(userFactory);
 
+    private ManageApplicationView manageApplicationView;
+    private ManageApplicationViewModel manageApplicationViewModel;
     private SignupView signupView;
     private SignupViewModel signupViewModel;
     private LoginViewModel loginViewModel;
@@ -59,6 +59,13 @@ public class AppBuilder {
 
     public AppBuilder() {
         cardPanel.setLayout(cardLayout);
+    }
+
+    public AppBuilder addManageApplicationView() {
+        manageApplicationViewModel = new ManageApplicationViewModel();
+        manageApplicationView = new ManageApplicationView(manageApplicationViewModel);
+        cardPanel.add(manageApplicationView, manageApplicationView.getViewName());
+        return this;
     }
 
     public AppBuilder addSignupView() {
@@ -137,7 +144,6 @@ public class AppBuilder {
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         application.add(cardPanel);
-
         viewManagerModel.setState(signupView.getViewName());
         viewManagerModel.firePropertyChange();
 

@@ -73,7 +73,7 @@ class SignupInteractorTest {
 
         // Add Paul to the repo so that when we check later they already exist
         UserFactory factory = new UserFactory();
-        User user = factory.create("Paul", "pwd");
+        User user = factory.create("visitor","Paul", "pwd");
         userRepository.save(user);
 
         // This creates a presenter that tests whether the test case is as we expect.
