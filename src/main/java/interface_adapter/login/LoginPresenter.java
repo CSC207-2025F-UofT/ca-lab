@@ -3,6 +3,7 @@ package interface_adapter.login;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
+import view.GameDashboard;
 import use_case.login.LoginOutputBoundary;
 import use_case.login.LoginOutputData;
 
@@ -14,30 +15,43 @@ public class LoginPresenter implements LoginOutputBoundary {
     private final LoginViewModel loginViewModel;
     private final LoggedInViewModel loggedInViewModel;
     private final ViewManagerModel viewManagerModel;
+    private final GameDashboard dashboard; // renamed to avoid shadowing confusion
 
     public LoginPresenter(ViewManagerModel viewManagerModel,
                           LoggedInViewModel loggedInViewModel,
-                          LoginViewModel loginViewModel) {
+                          LoginViewModel loginViewModel,
+                          GameDashboard dashboard) {
         this.viewManagerModel = viewManagerModel;
         this.loggedInViewModel = loggedInViewModel;
         this.loginViewModel = loginViewModel;
+        this.dashboard = dashboard; // now valid — assigning the parameter to the field
     }
 
+    /**
+     * Prepares output data from the Login use case if no errors occur.
+     *
+     * @param response the output data
+     */
     @Override
     public void prepareSuccessView(LoginOutputData response) {
-        // On success, update the loggedInViewModel's state
         final LoggedInState loggedInState = loggedInViewModel.getState();
         loggedInState.setUsername(response.getUsername());
-        this.loggedInViewModel.firePropertyChange();
+        loggedInViewModel.firePropertyChange();
 
-        // and clear everything from the LoginViewModel's state
         loginViewModel.setState(new LoginState());
 
-        // switch to the logged in view
-        this.viewManagerModel.setState(loggedInViewModel.getViewName());
-        this.viewManagerModel.firePropertyChange();
+        // Update dashboard UI with username
+        dashboard.setUser(response.getUsername());
+
+        viewManagerModel.setState("dashboard");
+        viewManagerModel.firePropertyChange();
     }
 
+    /**
+     * Prepares output data from the Login use case if an error occurs.
+     *
+     * @param error the error message
+     */
     @Override
     public void prepareFailView(String error) {
         final LoginState loginState = loginViewModel.getState();

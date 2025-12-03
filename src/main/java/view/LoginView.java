@@ -1,8 +1,14 @@
 package view;
 
+import interface_adapter.ViewManagerModel;
+import interface_adapter.back.BackController;
 import interface_adapter.login.LoginController;
 import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginViewModel;
+import interface_adapter.themes.Theme;
+import interface_adapter.themes.ThemeManager;
+import interface_adapter.themes.ThemeUtil;
+import interface_adapter.themes.ThemedView;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -16,7 +22,7 @@ import java.beans.PropertyChangeListener;
 /**
  * The View for when the user is logging into the program.
  */
-public class LoginView extends JPanel implements ActionListener, PropertyChangeListener {
+public class LoginView extends JPanel implements ActionListener, PropertyChangeListener, ThemedView {
 
     private final String viewName = "log in";
     private final LoginViewModel loginViewModel;
@@ -29,12 +35,18 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
     private final JButton logIn;
     private final JButton cancel;
-    private LoginController loginController = null;
 
-    public LoginView(LoginViewModel loginViewModel) {
+    private LoginController loginController = null;
+    private BackController backController;
+
+    public LoginView(LoginViewModel loginViewModel, ThemeManager themeManager) {
 
         this.loginViewModel = loginViewModel;
         this.loginViewModel.addPropertyChangeListener(this);
+
+        // Colour Theme Changer
+        themeManager.registerView(this);
+        applyTheme(themeManager.getActiveTheme());
 
         final JLabel title = new JLabel("Login Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -65,7 +77,11 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
                 }
         );
 
-        cancel.addActionListener(this);
+        cancel.addActionListener(e -> {
+            if (backController != null) {
+                backController.execute();
+            }
+        });
 
         usernameInputField.getDocument().addDocumentListener(new DocumentListener() {
 
@@ -132,6 +148,11 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
         System.out.println("Click " + evt.getActionCommand());
     }
 
+    /**
+     * Listens for property change events.
+     * @param evt A PropertyChangeEvent object describing the event source
+     *          and the property that has changed.
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         final LoginState state = (LoginState) evt.getNewValue();
@@ -149,5 +170,14 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
     public void setLoginController(LoginController loginController) {
         this.loginController = loginController;
+    }
+
+    public void setBackController(BackController backController) {
+        this.backController = backController;
+    }
+
+
+    public void applyTheme(Theme theme) {
+        ThemeUtil.applyTheme(this, theme);
     }
 }

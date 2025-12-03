@@ -19,6 +19,11 @@ public class ChangePasswordInteractor implements ChangePasswordInputBoundary {
         this.userFactory = userFactory;
     }
 
+    /**
+     * Executes the Change Password use case.
+     *
+     * @param changePasswordInputData the input data for this use case
+     */
     @Override
     public void execute(ChangePasswordInputData changePasswordInputData) {
         if ("".equals(changePasswordInputData.getPassword())) {

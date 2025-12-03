@@ -19,6 +19,11 @@ public class SignupInteractor implements SignupInputBoundary {
         this.userFactory = userFactory;
     }
 
+    /**
+     * Executes the Signup use case.
+     *
+     * @param signupInputData the input data
+     */
     @Override
     public void execute(SignupInputData signupInputData) {
         if (userDataAccessObject.existsByName(signupInputData.getUsername())) {
@@ -42,6 +47,9 @@ public class SignupInteractor implements SignupInputBoundary {
         }
     }
 
+    /**
+     * Navigates the user to the Login view after successful signup.
+     */
     @Override
     public void switchToLoginView() {
         userPresenter.switchToLoginView();

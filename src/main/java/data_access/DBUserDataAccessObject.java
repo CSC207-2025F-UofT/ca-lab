@@ -26,6 +26,9 @@ public class DBUserDataAccessObject implements SignupUserDataAccessInterface,
     private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
     private static final String MESSAGE = "message";
+    private static final int SCORE = 0;
+    private static final String BIO = "bio";
+    private static final String FAV_POKEMON = "fav_pokemon";
     private final UserFactory userFactory;
 
     private String currentUsername;
@@ -34,6 +37,12 @@ public class DBUserDataAccessObject implements SignupUserDataAccessInterface,
         this.userFactory = userFactory;
     }
 
+    /**
+     * Fetches a user's information from a database with the indicated username.
+     *
+     * @param username the username of the user to use as key
+     * @return user information for the provided username
+     */
     @Override
     public User get(String username) {
         // Make an API call to get the user object.
@@ -63,16 +72,32 @@ public class DBUserDataAccessObject implements SignupUserDataAccessInterface,
         }
     }
 
+    /**
+     * Setter for the current user's username.
+     *
+     * @param name the new chosen username
+     */
     @Override
     public void setCurrentUsername(String name) {
         currentUsername = name;
     }
 
+    /**
+     * Getter for the current user's username.
+     *
+     * @return current user's username
+     */
     @Override
     public String getCurrentUsername() {
         return currentUsername;
     }
 
+    /**
+     * Checks if a user exists in the database by username.
+     *
+     * @param username the new chosen username
+     * @return whether the user exists
+     */
     @Override
     public boolean existsByName(String username) {
         final OkHttpClient client = new OkHttpClient().newBuilder()
@@ -94,6 +119,11 @@ public class DBUserDataAccessObject implements SignupUserDataAccessInterface,
         }
     }
 
+    /**
+     * Saves a user's information to the database.
+     *
+     * @param user the user's information
+     */
     @Override
     public void save(User user) {
         final OkHttpClient client = new OkHttpClient().newBuilder()
@@ -127,6 +157,11 @@ public class DBUserDataAccessObject implements SignupUserDataAccessInterface,
         }
     }
 
+    /**
+     * Changes a user's password saved in the database.
+     *
+     * @param user the user whose password is changed; the new password is contained in the object
+     */
     @Override
     public void changePassword(User user) {
         final OkHttpClient client = new OkHttpClient().newBuilder()
@@ -158,5 +193,50 @@ public class DBUserDataAccessObject implements SignupUserDataAccessInterface,
         catch (IOException | JSONException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    /**
+     * Saves a user's new profile information into the database.
+     *
+     * @param user the user whose info is being changed
+     */
+    public void editProfile(User user) {
+        final OkHttpClient client = new OkHttpClient().newBuilder()
+                                        .build();
+
+        // POST METHOD
+        final MediaType mediaType = MediaType.parse(CONTENT_TYPE_JSON);
+        final JSONObject requestBody = new JSONObject();
+        requestBody.put(USERNAME, user.getName());
+        requestBody.put(PASSWORD, user.getPassword());
+        requestBody.put(String.valueOf(SCORE), String.valueOf(user.getScore()));
+        requestBody.put(BIO, user.getBio());
+        requestBody.put(FAV_POKEMON, user.getFavPokemon());
+        final RequestBody body = RequestBody.create(requestBody.toString(), mediaType);
+        final Request request = new Request.Builder()
+                .url("http://vm003.teach.cs.toronto.edu:20112/user")
+                .method("PUT", body)
+                .addHeader(CONTENT_TYPE_LABEL, CONTENT_TYPE_JSON)
+                .build();
+        try {
+            final Response response = client.newCall(request).execute();
+
+            final JSONObject responseBody = new JSONObject(response.body().string());
+
+            if (responseBody.getInt(STATUS_CODE_LABEL) == SUCCESS_CODE) {
+                // success!
+            }
+            else {
+                throw new RuntimeException(responseBody.getString(MESSAGE));
+            }
+        }
+        catch (IOException | JSONException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    @Override
+    public void updateUserProfile(User user) {
+        editProfile(user);
     }
 }

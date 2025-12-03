@@ -112,6 +112,12 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
         System.out.println("Click " + evt.getActionCommand());
     }
 
+    /**
+     * Listens for property change events.
+     *
+     * @param evt A PropertyChangeEvent object describing the event source
+     *          and the property that has changed.
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (evt.getPropertyName().equals("state")) {
