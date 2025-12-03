@@ -3,7 +3,12 @@ package view;
 import interface_adapter.logged_in.ChangePasswordController;
 import interface_adapter.logged_in.LoggedInState;
 import interface_adapter.logged_in.LoggedInViewModel;
+import interface_adapter.stock_search.StockSearchController;
+import interface_adapter.stock_search.StockSearchViewModel;
 import interface_adapter.logout.LogoutController;
+import interface_adapter.news.NewsController;
+import interface_adapter.ViewManagerModel;
+import interface_adapter.market_status.MarketStatusViewModel;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -24,6 +29,15 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
     private final JLabel passwordErrorField = new JLabel();
     private ChangePasswordController changePasswordController = null;
     private LogoutController logoutController;
+    private NewsController newsController;
+    private ViewManagerModel viewManagerModel;
+    private String newsViewName;
+    private String historyViewName;
+    private JLabel marketStatusLabel;
+    private MarketStatusViewModel marketStatusViewModel;
+
+    private StockSearchController stockSearchController;
+    private StockSearchViewModel stockSearchViewModel;
 
     private final JLabel username;
 
@@ -32,29 +46,94 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
     private final JTextField passwordInputField = new JTextField(15);
     private final JButton changePassword;
 
+    private final JTextField searchStockField = new JTextField(25);
+    private final JButton searchButton = new JButton("Search");
+    private final JTextArea stockInfoArea = new JTextArea();
+    private final JButton addToWatchlistButton = new JButton("Add to Watchlist");
+    private final JButton historyButton;
+
     public LoggedInView(LoggedInViewModel loggedInViewModel) {
         this.loggedInViewModel = loggedInViewModel;
         this.loggedInViewModel.addPropertyChangeListener(this);
 
-        final JLabel title = new JLabel("Logged In Screen");
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        final LabelTextPanel passwordInfo = new LabelTextPanel(
-                new JLabel("Password"), passwordInputField);
-
-        final JLabel usernameInfo = new JLabel("Currently logged in: ");
         username = new JLabel();
 
-        final JPanel buttons = new JPanel();
         logOut = new JButton("Log Out");
-        buttons.add(logOut);
-
         changePassword = new JButton("Change Password");
-        buttons.add(changePassword);
 
         logOut.addActionListener(this);
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new BorderLayout());
+
+        final JPanel topToolbar = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 10));
+
+        final JButton newsButton = new JButton("News");
+        newsButton.addActionListener(e -> {
+            System.out.println("News button clicked"); // debug
+            if (viewManagerModel != null && newsViewName != null) {
+                viewManagerModel.setState(newsViewName);
+                viewManagerModel.firePropertyChange();
+            }
+        });
+
+        final JButton filterSearchButton = new JButton("Filter Search");
+        historyButton = new JButton("History");
+        historyButton.addActionListener(e -> {
+            if (viewManagerModel != null && historyViewName != null) {
+                viewManagerModel.setState(historyViewName);
+                viewManagerModel.firePropertyChange();
+            }
+        });
+        final JButton marketOpenButton = new JButton("Market Open");
+        final JButton accountButton = new JButton("Account");
+
+        topToolbar.add(newsButton);
+        topToolbar.add(filterSearchButton);
+        topToolbar.add(historyButton);
+        topToolbar.add(marketOpenButton);
+        topToolbar.add(accountButton);
+
+        this.add(topToolbar, BorderLayout.NORTH);
+
+        marketStatusLabel = new JLabel("Loading market status...");
+        marketStatusLabel.setFont(marketStatusLabel.getFont().deriveFont(Font.PLAIN, 11f));
+        marketStatusLabel.setForeground(Color.DARK_GRAY);
+
+        topToolbar.add(Box.createHorizontalStrut(20));
+        topToolbar.add(marketStatusLabel);
+
+        final JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+
+        final JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        final JLabel searchLabel = new JLabel("Search Stock:");
+        searchPanel.add(searchLabel);
+        searchPanel.add(searchStockField);
+        searchPanel.add(searchButton);
+
+        centerPanel.add(searchPanel);
+
+        stockInfoArea.setLineWrap(true);
+        stockInfoArea.setWrapStyleWord(true);
+
+        final JPanel stockInfoPanel = new JPanel(new BorderLayout());
+        stockInfoPanel.setBorder(BorderFactory.createTitledBorder("Stock Information"));
+        stockInfoPanel.add(new JScrollPane(stockInfoArea), BorderLayout.CENTER);
+
+        centerPanel.add(stockInfoPanel);
+
+        this.add(centerPanel, BorderLayout.CENTER);
+
+        searchButton.addActionListener(e -> {
+            if (stockSearchController != null) {
+                stockSearchController.search(searchStockField.getText());
+            }
+        });
+
+        final JPanel bottomPanel = new JPanel(new BorderLayout());
+        bottomPanel.add(addToWatchlistButton, BorderLayout.CENTER);
+
+        this.add(bottomPanel, BorderLayout.SOUTH);
 
         passwordInputField.getDocument().addDocumentListener(new DocumentListener() {
 
@@ -63,6 +142,8 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
                 currentState.setPassword(passwordInputField.getText());
                 loggedInViewModel.setState(currentState);
             }
+
+
 
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -94,13 +175,6 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
                 }
         );
 
-        this.add(title);
-        this.add(usernameInfo);
-        this.add(username);
-
-        this.add(passwordInfo);
-        this.add(passwordErrorField);
-        this.add(buttons);
     }
 
     /**
@@ -139,7 +213,74 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
         this.changePasswordController = changePasswordController;
     }
 
+    public void setStockSearchController(StockSearchController stockSearchController) {
+        this.stockSearchController = stockSearchController;
+    }
+
+    public void setStockSearchViewModel(StockSearchViewModel stockSearchViewModel) {
+        this.stockSearchViewModel = stockSearchViewModel;
+        this.stockSearchViewModel.addPropertyChangeListener(evt -> {
+            if (!"state".equals(evt.getPropertyName())) {
+                return;
+            }
+            StockSearchViewModel vm = (StockSearchViewModel) evt.getNewValue();
+            if (vm.getErrorMessage() != null && !vm.getErrorMessage().isBlank()) {
+                stockInfoArea.setText(vm.getErrorMessage());
+            } else if (vm.getInfoText() != null) {
+                stockInfoArea.setText(vm.getInfoText());
+            } else {
+                stockInfoArea.setText("");
+            }
+        });
+    }
+
     public void setLogoutController(LogoutController logoutController) {
         // TODO: save the logout controller in the instance variable.
+    }
+
+    public void setNewsNavigation(ViewManagerModel viewManagerModel, String newsViewName) {
+        this.viewManagerModel = viewManagerModel;
+        this.newsViewName = newsViewName;
+    }
+
+    public void setHistoryNavigation(ViewManagerModel viewManagerModel,
+                                     String historyViewName) {
+        this.viewManagerModel = viewManagerModel;
+        this.historyViewName = historyViewName;
+    }
+
+
+
+    public void setMarketStatusViewModel(MarketStatusViewModel viewModel) {
+        this.marketStatusViewModel = viewModel;
+
+        // Listen for changes in market status
+        this.marketStatusViewModel.addPropertyChangeListener(evt -> {
+            if (!"state".equals(evt.getPropertyName())) return;
+            updateMarketStatusLabel();
+        });
+    }
+
+    private void updateMarketStatusLabel() {
+        if (marketStatusViewModel == null) {
+            return;
+        }
+
+        String text = marketStatusViewModel.getStatusText();
+        if (text == null || text.isBlank()) {
+            marketStatusLabel.setText("Market status unavailable");
+            marketStatusLabel.setForeground(Color.GRAY);
+            return;
+        }
+
+        marketStatusLabel.setText(text);
+
+        if (marketStatusViewModel.getErrorMessage() != null) {
+            marketStatusLabel.setForeground(Color.RED);
+        } else if (marketStatusViewModel.isOpen()) {
+            marketStatusLabel.setForeground(new Color(0, 128, 0)); // green-ish
+        } else {
+            marketStatusLabel.setForeground(Color.GRAY);
+        }
     }
 }
