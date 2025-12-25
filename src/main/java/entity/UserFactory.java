@@ -5,7 +5,14 @@ package entity;
  */
 public class UserFactory {
 
-    public User create(String name, String password) {
-        return new User(name, password);
+    public User create(String type, String name, String password) {
+        switch (type.toLowerCase()) {
+            case "visitor":
+                return new Visitor(name, password);
+            case "administrator":
+                return new Administrator(name, password);
+            default:
+                throw new IllegalArgumentException("Unknown user type: " + type);
+        }
     }
 }
