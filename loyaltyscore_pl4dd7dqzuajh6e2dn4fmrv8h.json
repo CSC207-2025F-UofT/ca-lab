@@ -1,0 +1,387 @@
+{"loyalty_scores": [
+    {
+        "date": "2025-12-02",
+        "score": 650,
+        "artist_name": "Taylor Swift"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 440,
+        "artist_name": "Sabrina Carpenter"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 210,
+        "artist_name": "Charli xcx"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 160,
+        "artist_name": "Doja Cat"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 160,
+        "artist_name": "The Marías"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 160,
+        "artist_name": "Ariana Grande"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 150,
+        "artist_name": "Lana Del Rey"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 150,
+        "artist_name": "SZA"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 150,
+        "artist_name": "Billie Eilish"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 110,
+        "artist_name": "Clairo"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 110,
+        "artist_name": "Olivia Rodrigo"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 110,
+        "artist_name": "Gracie Abrams"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 110,
+        "artist_name": "Addison Rae"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Laufey"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Troye Sivan"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Sade"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Father John Misty"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Ted Jasper"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Lily Allen"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "RAYE"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Blood Orange"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Lizzy McAlpine"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Lorde"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Specialist Moss"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Olivia Dean"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Reneé Rapp"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Mark Ronson"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "berlioz"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 70,
+        "artist_name": "Mitski"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 70,
+        "artist_name": "Childish Gambino"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 70,
+        "artist_name": "Djo"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 60,
+        "artist_name": "Michael Jackson"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 60,
+        "artist_name": "beabadoobee"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Lyn Lapid"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Lil Nas X"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "bbno$"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Ricky Montgomery"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "OKPOP"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "carwash"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Doechii"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Mustard Service"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "PinkPantheress"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Indigo De Souza"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Adiescar Chase"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Leah Johnson"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Various Artists"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Wasia Project"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 50,
+        "artist_name": "Beyoncé"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 20,
+        "artist_name": "Carlina"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 20,
+        "artist_name": "Tyler, The Creator"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Cigarettes After Sex"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Billy Joel"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Sxllie"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Matt Friedman"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Lola Young"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "A. G. Cook"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Regina Spektor"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "mxmtoon"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Liana Flores"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Dominic Fike"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Studio Killers"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Kendrick Lamar"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Miguel"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Whatever, Dad"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Shokaii"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Yot Club"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Suki Waterhouse"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "WILLOW"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Harry Styles"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Black Eyed Peas"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Claud"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "PARTYNEXTDOOR"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "quinnie"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Nonna"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Hotel Ugly"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Faye Webster"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 10,
+        "artist_name": "Cloudy June"
+    }
+]}

@@ -40,3 +40,13 @@ build/
 
 ### other files ###
 users.csv
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
+# Configuration files with secrets
+config.properties
+*.config
