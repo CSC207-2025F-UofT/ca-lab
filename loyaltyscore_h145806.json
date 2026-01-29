@@ -1,0 +1,687 @@
+{"loyalty_scores": [
+    {
+        "date": "2025-12-01",
+        "score": 180,
+        "artist_name": "Tanchiky"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 170,
+        "artist_name": "Siromaru"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 150,
+        "artist_name": "i-dle"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 150,
+        "artist_name": "Car Seat Headrest"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 150,
+        "artist_name": "ARTMS"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 110,
+        "artist_name": "s-don"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "ikaruga_nex"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Toby Fox"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "mami"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "SOUND HOLIC"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "paraoka"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "打打だいず"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "FALCHiON"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Team Grimoire"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Puru"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "C-Show"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "BlackY"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Red Velvet"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "REDALiCE"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "EBIMAYO"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "ヴィドール"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Yuta Imai"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Camellia"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Loossemble"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Onoken"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Sampling Masters AYA"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "からとPαnchii少年"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "lapix"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Kobaryo"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "3R2"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Kagetora."
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "fromis_9"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Sennzai"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "はるの"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "ルゼ"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Qlarabelle"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "お月さま交響曲"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Powerless"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "暁Records"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Hino Isuka"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "溶けない名前"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Feryquitous"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Edelritter"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Maozon"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Frums"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "polysha"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Modern Baseball"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Sta"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "ETIA."
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Designant"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "NAYEON"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Ashrount"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Laur"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "Nana Takahashi"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "TANO*C Sound Team"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 100,
+        "artist_name": "KO3 & Relect"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 70,
+        "artist_name": "NEEDY GIRL OVERDOSE"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 60,
+        "artist_name": "Kagrra,"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 60,
+        "artist_name": "BUCK-TICK"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 60,
+        "artist_name": "Kaya"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 60,
+        "artist_name": "Sonic Youth"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "HUNTR/X"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Alex G"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "The Marías"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Muse"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "ITZY"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "LOCKSTEP"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "水谷黒"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "KPop Demon Hunters Cast"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Diaura"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Duster"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "宇宙ネコ子"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Parannoul"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "late night drive home"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "MASS OF THE FERMENTING DREGS"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "POiSON GiRL FRiEND"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Cö shu Nie"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "a picture of her"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "缺省"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "ワンダーランズ×ショウタイム"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Sohodolls"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Deftones"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Tate McRae"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "NASTYONA"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "LE SSERAFIM"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "deadman"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "25時、ナイトコードで。"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Citrobal"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Saja Boys"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Fennel"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "The Cure"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "She Wants Revenge"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Plastic Tree fan"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Fukuro"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Boyz & Girl"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 50,
+        "artist_name": "Various Artists"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 20,
+        "artist_name": "P1Harmony"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 20,
+        "artist_name": "宵崎奏"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 20,
+        "artist_name": "Aiobahn +81"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Kiraku"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "カラビンカ"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "FKA twigs"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Yoeko Kurahashi"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Deux Visages"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "暁山瑞希"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "ICHIRO KAMIYAMA"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "The Inbreds"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "greedi"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "M2U"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Lizzy McAlpine"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "The Microphones"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Kim Sung Jae"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "The Goo Goo Dolls"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "X JAPAN"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Sweet Pill"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "TEEN TOP"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Softcult"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "The Smashing Pumpkins"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Közi"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "cherry pick"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "LUNA SEA"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Yooh"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Skeletallest"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Girls' Generation"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "L'Arc-en-Ciel"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "empire! empire! (i was a lonely estate)"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Tiny Moving Parts"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "MASCHERA"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "B1A4"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "DJ Noriken"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "t+pazolite"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "PENICILLIN"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "SS501"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Akira Complex"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Ovlov"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "Dalshabet"
+    },
+    {
+        "date": "2025-12-01",
+        "score": 10,
+        "artist_name": "YOU LOVE HER"
+    }
+]}

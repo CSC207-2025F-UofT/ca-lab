@@ -1,0 +1,22 @@
+{"loyalty_scores": [
+    {
+        "date": "2025-12-02",
+        "score": 110,
+        "artist_name": "Mitski"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Sabrina Carpenter"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Midlake"
+    },
+    {
+        "date": "2025-12-02",
+        "score": 100,
+        "artist_name": "Gracie Abrams"
+    }
+]}
