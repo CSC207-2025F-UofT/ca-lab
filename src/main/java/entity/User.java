@@ -1,5 +1,9 @@
 package entity;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 /**
  * A simple entity representing a user. Users have a username and password..
  */
@@ -7,6 +11,7 @@ public class User {
 
     private final String name;
     private final String password;
+    private final ArrayList<JSONObject> watchlist = new ArrayList<>();
 
     /**
      * Creates a new user with the given non-empty name and non-empty password.
@@ -32,5 +37,7 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    public ArrayList<JSONObject> getWatchlist() { return watchlist; }
 
 }
