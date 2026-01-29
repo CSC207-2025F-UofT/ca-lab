@@ -33,4 +33,8 @@ public class User {
         return password;
     }
 
+    public String getUserType() {
+        return "user";
+    }
+
 }

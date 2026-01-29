@@ -15,4 +15,7 @@ public interface LoginOutputBoundary {
      * @param errorMessage the explanation of the failure
      */
     void prepareFailView(String errorMessage);
+
+    //go back to signup view when pressing cancel button
+    void switchToSignupView();
 }
