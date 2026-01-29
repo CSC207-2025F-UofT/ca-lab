@@ -1,0 +1,92 @@
+{"loyalty_scores": [
+    {
+        "date": "2025-11-24",
+        "score": 620,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-11-24",
+        "score": 1130,
+        "artist_name": "Artist2"
+    },
+    {
+        "date": "2025-04-12",
+        "score": 90,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-04-13",
+        "score": 590,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-11-24",
+        "score": 620,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-11-24",
+        "score": 1130,
+        "artist_name": "Artist2"
+    },
+    {
+        "date": "2025-04-12",
+        "score": 90,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-04-13",
+        "score": 590,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-11-24",
+        "score": 620,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-11-24",
+        "score": 1130,
+        "artist_name": "Artist2"
+    },
+    {
+        "date": "2025-04-12",
+        "score": 90,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-04-13",
+        "score": 590,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-11-24",
+        "score": 620,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-11-24",
+        "score": 1130,
+        "artist_name": "Artist2"
+    },
+    {
+        "date": "2025-04-12",
+        "score": 90,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-04-13",
+        "score": 590,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-11-24",
+        "score": 620,
+        "artist_name": "Artist1"
+    },
+    {
+        "date": "2025-11-24",
+        "score": 1130,
+        "artist_name": "Artist2"
+    }
+]}

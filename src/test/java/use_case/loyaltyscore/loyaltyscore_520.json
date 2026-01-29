@@ -1,0 +1,24 @@
+{
+  "loyalty_scores": [
+    {
+      "date": "2023-11-23",
+      "artist_name": "Artist1",
+      "score": 85
+    },
+    {
+      "date": "2023-11-23",
+      "artist_name": "Artist2",
+      "score": 90
+    },
+    {
+      "date": "2023-11-22",
+      "artist_name": "Artist3",
+      "score": 75
+    },
+    {
+      "date": "2023-11-21",
+      "artist_name": "Artist1",
+      "score": 88
+    }
+  ]
+}

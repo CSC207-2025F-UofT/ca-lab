@@ -1,6 +1,6 @@
 package use_case.login;
 
-import entity.User;
+import entity.SpotifyUser;
 
 /**
  * DAO interface for the Login Use Case.
@@ -18,14 +18,14 @@ public interface LoginUserDataAccessInterface {
      * Saves the user.
      * @param user the user to save
      */
-    void save(User user);
+    void save(SpotifyUser user);
 
     /**
      * Returns the user with the given username.
      * @param username the username to look up
      * @return the user with the given username
      */
-    User get(String username);
+    SpotifyUser get(String username);
 
     void setCurrentUsername(String name);
 
