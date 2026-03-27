@@ -1,5 +1,6 @@
 package view;
 
+import interface_adapter.ViewManagerModel;
 import interface_adapter.login.LoginController;
 import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginViewModel;
@@ -20,6 +21,9 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
     private final String viewName = "log in";
     private final LoginViewModel loginViewModel;
+
+    private ViewManagerModel viewManagerModel;
+    private String homeViewName;
 
     private final JTextField usernameInputField = new JTextField(15);
     private final JLabel usernameErrorField = new JLabel();
@@ -64,6 +68,13 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
                     }
                 }
         );
+
+        cancel.addActionListener(e -> {
+            if (viewManagerModel != null && homeViewName != null) {
+                viewManagerModel.setState(homeViewName);
+                viewManagerModel.firePropertyChange();
+            }
+        });
 
         cancel.addActionListener(this);
 
@@ -149,5 +160,10 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
     public void setLoginController(LoginController loginController) {
         this.loginController = loginController;
+    }
+
+    public void setBackNavigation(ViewManagerModel viewManagerModel, String homeViewName) {
+        this.viewManagerModel = viewManagerModel;
+        this.homeViewName = homeViewName;
     }
 }

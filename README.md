@@ -1,252 +1,294 @@
-# Clean Architecture Team Lab Activity: Login and Logout
-
-In this team lab activity, your team will:
-- explore an existing use case (login)
-- add a new use case (logout).
-
-To earn credit:
-- your team must demo your working `logout` use case.
-
-Your demo should be similar to the below example:
-
-![](images/sample-logout.gif)
-
----
-
-## Task 0: Fork this repo on GitHub
-**To get started, one team member should fork this repo on GitHub and share it with the team.
-All team members should then clone it.**
-
-
-**Suggested logistics:** One of you should invite the others to collaborate on their fork of the original repo on GitHub. You can do this in your repo on GitHub under `Settings -> Collaborators`. This will allow you to push branches to a common repo and then use pull requests to contribute your code and review. To prevent others from pushing directly to the main branch, we recommend that you set branch protection rules on GitHub. Below are how the settings might look if you add branch protection rules:
-
-![image of branch protection rules for main with a requirement of two approvers to merge in pull requests.](images/branch_protection_rules.png)
-
----
-
-## Task 1: Understanding the Program
-
-Open the project in IntelliJ. Open `app.Main` and read it as a team.
-- What are the currently implemented Views and Use Cases in the program?
-- Which Use Cases are triggered from each View?
-- Which version of the DAO is `app.Main` using?
-
-> Observe that the main method makes use of the `app.AppBuilder` class which
-is responsible for constructing our CA engine for each use case of the application. To answer the last two questions above, you will need to look inside the details of the `app.AppBuilder` class.
-
-**Make sure that each member of your team can successfully run `app/Main.java`.**
-- Ensure that you are each able to create a new user and log in using the username and password.
-
-> Note: you may need to set the Project SDK in the `Project Structure...` menu, and possibly
-> also manually link the Maven project if the app won't run when you try to run Main.
-
-### Task 1.1: Exploring the login use case
-
-Let's take a tour of the login use case code:
-
-- In IntelliJ, find the `LoginController` class and open it.
-
-- Set a breakpoint inside its `execute` method.
-
-- Run the program in debug mode.
-
-- On the login page, attempt to log in with an existing account. When you click the button, the breakpoint that you set will be triggered.
-
-- **Step through the code to trace the execution of the login use case.**
-  Importantly, pay extra close attention to what the Presenter does to ensure that the LoggedInView gets displayed after the user successfully gets logged into the application.
-
-The code is designed based on our CA Engine that was introduced in the reading this week. For reference, here is our CA Engine diagram:
-
-![The Clean Architecture Engine diagram](images/CA-Engine.png)
-
-> Pay attention to the classes involved and the flow of execution. When your team implements the logout use case next, your code will need to have a very similar structure.
-
-To better understand how the view gets updated, your team may find it useful to review the [Extra Advice about the Presenters, Views, and ViewModels](#extra-advice-about-the-presenters-views-and-viewmodels) section at the end of this README.
-
-## Task 2: Implementing the Logout Use Case
-
-Currently, you'll notice that the "Log Out" button in the `LoggedInView` still doesn't actually log you out of the program. Let's fix this.
-
-We have created all the classes for your team, but some of the code is missing. **As a team, your task is to fill in the missing code so that the logout use case is functional.**
-
-> The next part of the readme describes how your team will do this.
-
-Your team will know when you are done when:
-
-- Clicking the "Log Out" button takes the user back to the Login View when you use the program.
-- On the Login View, the username of the logged-out user is filled in.
-- The provided `LogoutInteractorTest` test passes.
-
-### Task 2.1: Dividing up the work
-
-There are `TODO` comments left in the files.
-
-> Recall that you can use the TODO tool window to conveniently pull up a complete list.
-
-Once all TODOs are complete, the "Log Out" button _should_ work!
-
-**As a team, split up the TODOs (see below) between the members of your team.**
-
-> Optionally, your team can make GitHub Issues and assign them to each team member.
-
-Make sure that each member has at least one TODO that they will be responsible for completing.
-If your team prefers to work in pairs, that is fine too.
-
-The TODOs are summarized below (by file) to help your team decide how to split them up:
-
----
-
-- `Main.java` (tip: look at how other use cases have been added)
-    -[ ] TODO: add the logout use case to the app
-  
----
-
-- `LoggedInView.java` (tip: refer to the other views for similar code)
-    -[ ] TODO: save the logout controller in the instance variable.
-    -[ ] TODO: execute the logout use case through the Controller
-
----
-
-- `LogoutController.java` (tip: refer to the other controllers for similar code)
-    -[ ] TODO: Save the interactor in the instance variable.
-    -[ ] TODO: run the use case interactor for the logout use case
-
-> Note: there is no input data necessary for this use case.
-
----
-
-- `LogoutInteractor.java` (tip: refer to `ChangePasswordInteractor.java` for similar code)
-    -[ ] TODO: save the DAO and Presenter in the instance variables.
-    -[ ] TODO: implement the logic of the Logout Use Case
-
-> Note: there is no input data necessary for this use case.
-
----
-
-- `LogoutPresenter.java` (tip: refer to `SignupPresenter.java` for similar code)
-    -[ ] TODO: assign to the three instance variables.
-    -[ ] TODO: have prepareSuccessView update the LoggedInState
-    -[ ] TODO: have prepareSuccessView update the LoginState
-
----
-
-### Task 2.2: Complete your TODOs!
-With the work divided up, your team should complete the TODOs through a sequence of PRs.
-
-1. Make a branch for your work.
-
-> Make sure that you switch to your new branch!
-
-2. Complete your assigned TODO and make a pull request on GitHub. In your pull request,
-   briefly describe what your TODO was and how you implemented it. If you aren't sure
-   about part of it, include this in your pull request so that everyone knows what to look
-   for when reviewing — or you can of course discuss with your team before making your
-   pull request.
-
-3. Review all pull requests to ensure each TODO is correctly implemented.
-
-4. Once all TODOs are completed, your team should debug as needed to ensure the
-   correctness of the code. Setting a breakpoint where the logout use case
-   interactor starts its work will likely be a great place to start when debugging.
-
-And that's it; your team should now have a working logout use case!
-
-**Demo your working code to your TA to earn credit.**
-
----
-
-# Extra Advice about the Presenters, Views, and ViewModels
-
-One of the trickiest parts of the code will be the flow of information between these pieces of the program. Below briefly explains how these pieces fit together and work in the context of the login use case.
-
-## ViewModels and States
-
-In the design of this program, `ViewModel` is written using generics to allow
-for different "state" objects to be stored. For a `LoginViewModel`, the state is an instance of class `LoginState`. Each state object will just contain a basic constructor, getters, and setters to store the data of the view model.
-
-## A View and its ViewModel
-
-In the constructor of `LoginView`, the following line of code connects this instance of `LoginView` to its associated `LoginViewModel`:
-
-```java
-this.loginViewModel.addPropertyChangeListener(this);
+# Stock Project
+
+A comprehensive stock market application built with Java Swing, following Clean Architecture principles. This application provides real-time stock data, news, earnings history, and market status information.
+
+## Features
+
+### User Management
+- **User Registration**: Create a new account with username and password
+- **User Login**: Secure authentication to access the application
+- **Password Management**: Change password functionality
+- **User Logout**: Secure session termination
+
+### Stock Information
+- **Stock Search**: Search for stocks by symbol with detailed information
+- **Filter Search**: Advanced filtering capabilities for stock discovery
+- **Real-Time Trade Feed**: Live WebSocket connection to receive real-time trade data
+  - Connect to any trading symbol (e.g., `BINANCE:BTCUSDT`, `AAPL`, `TSLA`)
+  - View real-time price, volume, and timestamp updates
+  - Rate limiting protection to prevent API throttling
+  - Automatic error handling for invalid symbols or connection issues
+
+### Market Data
+- **Market News**: View latest market and company-specific news articles
+- **Earnings History**: Access historical earnings data for companies
+- **Market Status**: Real-time market open/closed status indicator
+
+## Architecture
+
+This project follows **Clean Architecture** principles with clear separation of concerns:
+
+```
+src/main/java/
+├── app/                    # Application entry point and dependency injection
+├── data_access/            # Infrastructure layer (API clients, file I/O)
+├── entity/                 # Domain models
+├── interface_adapter/      # Adapters (ViewModels, Controllers, Presenters)
+├── use_case/              # Business logic (Interactors)
+└── view/                  # Presentation layer (Swing UI)
 ```
 
-This should remind you of the code we write when adding an action listener to a button. The code is following the same structure.
+### Key Components
 
-> We'll talk more about this "pattern" of _events_ and _listeners_ in our next module.
+- **Entity Layer**: Domain models (`User`, `Stock`, `StockQuote`, `Trade`, `NewsArticle`, `EarningsRecord`, `MarketStatus`)
+- **Use Case Layer**: Business logic and application rules
+  - User management: Login, Signup, Logout, Change Password
+  - Stock operations: Stock Search, Filter Search
+  - Market data: News, Earnings History, Market Status
+  - Real-time data: Trade Feed
+  - User features: Watchlist management
+- **Interface Adapter Layer**: Controllers, Presenters, and ViewModels
+- **Framework Layer**: Data access objects and UI components (Swing views)
 
-When the presenter updates the view model later, an event will be triggered — resulting in the view's `propertyChange` method getting called, with a `PropertyChangeEvent` object being passed through as the argument to the call.
+## Getting Started
 
-For example, the `LoginView.propertyChange` method looks like:
+### Prerequisites
+- Java 15 or higher
+- Maven 3.6+
+- Internet connection (for API access)
 
-```java
-public void propertyChange(PropertyChangeEvent evt) {
-        final LoginState state = (LoginState) evt.getNewValue();
-        setFields(state);
-        usernameErrorField.setText(state.getLoginError());
-    }
+### Installation & Running
+
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd CSC207_Stock_Project
+   ```
+
+2. **Build the project**:
+   ```bash
+   mvn clean compile
+   ```
+
+3. **Run the application**:
+   ```bash
+   mvn exec:java -Dexec.mainClass="app.Main"
+   ```
+   Or run `Main.java` directly from your IDE
+
+4. **Run tests**:
+   ```bash
+   mvn test
+   ```
+
+### First Time Setup
+
+1. **Create an Account**: 
+   - Launch the application
+   - Click "Sign Up" to create a new user account
+   - Enter a username and password
+   
+2. **Login**: 
+   - Use your credentials to log in
+   
+3. **Explore Features**: 
+   - Navigate using the top toolbar buttons
+   - Try searching for stocks, viewing news, or connecting to real-time trades
+
+## Usage Guide
+
+### User Management
+
+#### Sign Up
+1. Launch the application
+2. Enter a username and password
+3. Click "Sign Up" to create your account
+4. You'll be automatically redirected to the login page
+
+#### Login
+1. Enter your username and password
+2. Click "Log In" to access the application
+3. You'll be taken to the main dashboard (Logged In View)
+
+#### Change Password
+1. After logging in, enter your new password in the password field
+2. Click "Change Password" to update your credentials
+3. You'll receive a confirmation message upon success
+
+#### Logout
+1. Click "Log Out" to securely end your session
+2. You'll be redirected to the login page
+
+### Main Dashboard Features
+
+Once logged in, you'll see the main dashboard with the following features:
+
+#### Stock Search & Watchlist
+1. Enter a stock symbol (e.g., `AAPL`, `TSLA`, `GOOGL`) in the search field on the main dashboard
+2. Click "Search" to retrieve detailed stock information
+3. View stock details in the "Stock Information" panel including:
+   - Company name and sector
+   - Current price and market data
+   - Price changes and volume
+4. **Add to Watchlist**: Click the "Add to Watchlist" button at the bottom of the main dashboard to save the currently displayed stock information to your watchlist
+5. **View Watchlist**: Click the "Account" button in the top toolbar to view all your saved watchlist items
+
+#### Real-Time Trade Feed
+1. Click the **"Realtime Trade"** button in the top toolbar
+2. Enter a trading symbol in the input field (default: `BINANCE:BTCUSDT`)
+   - **Crypto pairs work best**: `BINANCE:BTCUSDT`, `BINANCE:ETHUSDT`
+   - **Stock symbols**: `AAPL`, `TSLA` (only active during market hours)
+3. Click **"Connect"** to start receiving real-time trade data
+4. View live updates for:
+   - Symbol
+   - Last Price
+   - Volume
+   - Timestamp
+5. Click **"Disconnect"** to stop the feed before connecting to a new symbol
+
+**Important Notes:**
+- You must disconnect before connecting to a new symbol
+- Rate limiting is enforced (5-second cooldown between connections)
+- Invalid symbols or connection errors will display appropriate error messages
+- The application automatically handles API rate limits (429 errors)
+- Crypto pairs (e.g., `BINANCE:BTCUSDT`) work 24/7, while stock symbols only work during market hours
+
+#### Filter Search
+1. Click the **"Filter Search"** button in the top toolbar
+2. Use the search and filter options to find stocks by:
+   - Symbol pattern
+   - Market criteria
+   - Other filtering options
+3. View filtered results in the table
+4. Click "Back" to return to the main dashboard
+
+#### News
+1. Click the **"News"** button in the top toolbar
+2. View latest market news and company-specific articles
+3. Filter news by company symbol if needed
+4. Click "Back" to return to the main dashboard
+
+#### Earnings History
+1. Click the **"History"** button in the top toolbar
+2. Enter a stock symbol to view historical earnings data
+3. Browse through past earnings records and dates
+4. Click "Back" to return to the main dashboard
+
+#### Account & Watchlist
+1. Click the **"Account"** button in the top toolbar
+2. View all your saved watchlist items that you've added from the main dashboard
+3. Your watchlist displays all the stock information you've saved using the "Add to Watchlist" button
+4. Click "Back" to return to the main dashboard
+
+#### Market Status
+- The market status indicator is displayed in the top toolbar
+- Shows current market status (Open/Closed) in real-time
+- Updates automatically when market status changes
+- Color-coded: Green for open, Gray for closed, Red for errors
+
+## Technical Details
+
+### Dependencies
+- **OkHttp 4.12.0**: For HTTP and WebSocket connections
+- **JSON 20240303**: For JSON parsing
+- **JUnit 5.8.1**: For testing (test scope)
+
+### API Integration
+- **Finnhub API**: Used for stock data, news, earnings, and real-time trade feeds
+- WebSocket connections for real-time data streaming
+- REST API for historical and static data
+
+### Data Storage
+- User data stored in `users.csv` (file-based storage)
+- Alternative database storage option available (`DBUserDataAccessObject`)
+
+## Project Structure
+
+```
+CSC207_Stock_Project/
+├── src/
+│   ├── main/java/
+│   │   ├── app/              # Application setup
+│   │   ├── data_access/      # API clients and data sources
+│   │   ├── entity/           # Domain models
+│   │   ├── interface_adapter/# Adapters
+│   │   ├── use_case/         # Business logic
+│   │   └── view/             # UI components
+│   └── test/java/           # Unit tests
+├── pom.xml                   # Maven configuration
+└── README.md                 # This file
 ```
 
-The `LoginView` gets the `LoginState` object stored in the `LoginViewModel` and updates itself with that information.
+## Error Handling
 
-## A Presenter and its ViewModel(s)
+The application includes comprehensive error handling across all features:
+- **User Authentication**: Clear error messages for invalid credentials or existing usernames
+- **Password Management**: Validation for password changes and mismatches
+- **Stock Search**: Error messages for invalid symbols or search failures
+- **Rate Limiting**: Automatic cooldown periods to prevent API throttling (trade feed)
+- **Connection Errors**: User-friendly error messages for WebSocket connection issues
+- **Invalid Symbols**: Clear feedback when symbols are not found or unavailable
+- **Network Issues**: Graceful handling of network failures and API unavailability
+- **Data Loading**: Error handling for failed data fetches (news, earnings, market status)
 
-A presenter may have one or more view models associated with it. For example, the login use case's presenter has a reference to a `LoginViewModel` and a `LoggedInViewModel`, since it will need to update both view models. Additionally, our implementation makes use of a `ViewManager` and `ViewManagerModel` to keep track of which view
-the user should currently see.
+## Use Cases Implemented
 
-Let's take a look at the `LoginPresenter.prepareSuccessView` method as an example:
+The application implements the following use cases, each following Clean Architecture:
 
-```java
-public void prepareSuccessView(LoginOutputData response) {
-    // On success, update the loggedInViewModel's state
-    final LoggedInState loggedInState = loggedInViewModel.getState();
-    loggedInState.setUsername(response.getUsername());
-    this.loggedInViewModel.firePropertyChanged();
+### User Management
+- **Signup**: Create new user accounts with validation
+- **Login**: Authenticate users and manage sessions
+- **Logout**: Terminate user sessions securely
+- **Change Password**: Update user passwords with validation
 
-    // and clear everything from the LoginViewModel's state
-    this.loginViewModel.setState(new LoginState());
-    this.loginViewModel.firePropertyChanged();
+### Stock Operations
+- **Stock Search**: Search for stocks by symbol and display detailed information
+- **Filter Search**: Advanced filtering and search capabilities for stock discovery
 
-    // switch to the logged in view
-    this.viewManagerModel.setState(loggedInViewModel.getViewName());
-    this.viewManagerModel.firePropertyChanged();
-}
-```
+### Market Data
+- **News**: Fetch and display market and company-specific news articles
+- **Earnings History**: Retrieve and display historical earnings data for companies
+- **Market Status**: Real-time market open/closed status with automatic updates
 
-The first part of the code updates the view model for the logged-in view so that the newly logged-in username will be displayed. Once the state is updated, the `firePropertyChanged` method is called, which is what will trigger the call to the view's `propertyChange` method which will update the view based on the updated view model.
+### Real-Time Features
+- **Trade Feed**: WebSocket-based real-time trade data streaming
+  - Supports both crypto pairs and stock symbols
+  - Automatic reconnection and error handling
+  - Rate limiting protection
 
-This can be visualized as a sequence diagram as follows:
+### User Features
+- **Watchlist**: Save and manage favorite stocks in user accounts
+- **Account Management**: View and manage user account information
 
-> Note: this diagram has been simplified to focus on the high-level flow of information; the actual stack trace includes some additional intermediate calls which you can see if you step through the code in the debugger or manually click through the code.
+## Design Patterns & Principles
 
-![sequence diagram of the LoginPresenter code](images/login_presenter_sequence_diagram.png)
+### SOLID Principles
+- **Single Responsibility**: Each class has one clear purpose
+- **Open/Closed**: System open for extension (new implementations) but closed for modification
+- **Liskov Substitution**: All interface implementations are interchangeable
+- **Interface Segregation**: Focused interfaces (e.g., separate interfaces for Signup, Login, ChangePassword)
+- **Dependency Inversion**: High-level components depend on abstractions (interfaces), not concrete implementations
 
-We then do the same, but for the login view model whose state we want to clear.
+### Design Patterns
+- **Observer Pattern**: PropertyChangeListener for view updates
+- **Adapter Pattern**: TradeListener adapts async callbacks to synchronous presenter calls
+- **Builder Pattern**: AppBuilder for dependency injection and application setup
+- **Strategy Pattern**: Swappable data access implementations (FileUserDataAccessObject, DBUserDataAccessObject)
 
-Lastly, we update the state of the `viewManagerModel`, and alert the viewManager that it should switch to displaying the logged-in view.
+## Testing
 
-> Setting a breakpoint in the code and stepping through can help you see how the information flows through the system. Pay attention to the contents of the call stack to help you track where you are in the execution of the use case.
+The project includes unit tests for use cases:
+- Login, Signup, Logout tests
+- Stock Search, Filter Search tests
+- News, Earnings History, Market Status tests
+- Additional tests can be run with `mvn test`
 
-## The ViewManager
+## Contributing
 
-This class may stand out as a bit unclear about how it fits into our architecture, as it isn't in the CA Engine diagram at all. Remember that the CA Engine is representing a single use case in our program. Once our program has _multiple_ use cases, we naturally need some kind of additional code to connect them together. As we have seen, one use case can lead to a change in which view is presented to the user. To facilitate this, our implementation used a `ViewManager` and associated `ViewManagerModel` to take care of this switching for us. The state of a `ViewManagerModel` object is simply a string that indicates the name of the currently visible view (`JPanel` in this implementation). The `ViewManager` uses a `CardLayout` to conveniently display only the currently active view at a given time.
+This is a course project following Clean Architecture principles. When contributing:
+- Maintain separation of concerns across layers
+- Follow the existing architecture patterns
+- Add appropriate error handling
+- Include unit tests for new features
+- Respect interface boundaries and dependency inversion
 
-When the `ViewManager` is alerted of a change to its associated `ViewManagerModel`, its `propertyChange` method is executed:
-
-```java
-public void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getPropertyName().equals("state")) {
-            final String viewModelName = (String) evt.getNewValue();
-            cardLayout.show(views, viewModelName);
-        }
-    }
-```
-
-This code will update the application to display the view corresponding to the `viewModelName` string.
-
-> In the `AppBuilder` code, you can see how the views are originally added to the `cardLayout`.
-
-> Thought Question: Can you think of any alternatives to our `ViewManager` implementation for managing multiple views?
-
----

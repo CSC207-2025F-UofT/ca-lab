@@ -2,12 +2,16 @@ package data_access;
 
 import entity.User;
 import entity.UserFactory;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import use_case.change_password.ChangePasswordUserDataAccessInterface;
 import use_case.login.LoginUserDataAccessInterface;
 import use_case.logout.LogoutUserDataAccessInterface;
 import use_case.signup.SignupUserDataAccessInterface;
+import use_case.watchlist.WatchlistUserDataAccessInterface;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,9 +22,9 @@ import java.util.Map;
 public class FileUserDataAccessObject implements SignupUserDataAccessInterface,
                                                  LoginUserDataAccessInterface,
                                                  ChangePasswordUserDataAccessInterface,
-                                                 LogoutUserDataAccessInterface {
+                                                 LogoutUserDataAccessInterface, WatchlistUserDataAccessInterface {
 
-    private static final String HEADER = "username,password";
+    private static final String HEADER = "username,password,watchlist";
 
     private final File csvFile;
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -39,6 +43,7 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface,
         csvFile = new File(csvPath);
         headers.put("username", 0);
         headers.put("password", 1);
+        headers.put("watchlist", 2);
 
         if (csvFile.length() == 0) {
             save();
@@ -54,10 +59,20 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface,
 
                 String row;
                 while ((row = reader.readLine()) != null) {
-                    final String[] col = row.split(",");
-                    final String username = String.valueOf(col[headers.get("username")]);
-                    final String password = String.valueOf(col[headers.get("password")]);
+                    final String[] col = row.split(",",3);
+                    final String username = String.valueOf(col[0]);
+                    final String password = String.valueOf(col[1]);
+                    final String watchlist = String.valueOf(col[2]);
                     final User user = userFactory.create(username, password);
+
+                    JSONArray arr = new JSONArray(watchlist);
+                    ArrayList<JSONObject> userWatchlist = new ArrayList<>();
+                    for (int i = 0; i < arr.length(); i++) {
+                        if (!arr.isNull(i)) {
+                            userWatchlist.add(arr.getJSONObject(i));
+                        }
+                    }
+                    user.setWatchlist(userWatchlist);
                     accounts.put(username, user);
                 }
             }
@@ -75,8 +90,9 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface,
             writer.newLine();
 
             for (User user : accounts.values()) {
-                final String line = String.format("%s,%s",
-                        user.getName(), user.getPassword());
+                String watchlist = user.getWatchlist().toString();
+                final String line = String.format("%s,%s,%s",
+                        user.getName(), user.getPassword(), watchlist);
                 writer.write(line);
                 writer.newLine();
             }

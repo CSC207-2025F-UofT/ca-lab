@@ -9,9 +9,23 @@ public class Main {
                 .addLoginView()
                 .addSignupView()
                 .addLoggedInView()
+                .addFilterSearchView()
                 .addSignupUseCase()
                 .addLoginUseCase()
                 .addChangePasswordUseCase()
+                .addFilterSearchUseCase()
+                .addNewsView()
+                .addEarningsHistoryView()
+                .addTradeView()
+                .addStockSearchUseCase()
+                .addSignupUseCase()
+                .addLoginUseCase()
+                .addChangePasswordUseCase()
+                .addNewsUsecase()
+                .addEarningsHistoryUseCase()
+                .addAccount()
+                .addMarketStatusUseCase()
+                .addRealtimeTradeUseCase()
                 .build();
 
         application.pack();
