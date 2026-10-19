@@ -1,11 +1,12 @@
 package interface_adapter.signup;
 
-import interface_adapter.ViewModel;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The ViewModel for the Signup View.
  */
-public class SignupViewModel extends ViewModel<SignupState> {
+public class SignupViewModel {
 
     public static final String TITLE_LABEL = "Sign Up View";
     public static final String USERNAME_LABEL = "Choose username";
@@ -17,9 +18,27 @@ public class SignupViewModel extends ViewModel<SignupState> {
 
     public static final String TO_LOGIN_BUTTON_LABEL = "Go to Login";
 
-    public SignupViewModel() {
-        super("sign up");
-        setState(new SignupState());
+    private final List<SignupViewModelListener> listeners = new ArrayList<>();
+
+    public static final String VIEW_NAME = "sign up";
+
+    private SignupState state = new SignupState();
+
+    public SignupState getState() {
+        return this.state;
     }
 
+    public void setState(SignupState state) {
+        this.state = state;
+    }
+
+    public void addListener(SignupViewModelListener listener) {
+        listeners.add(listener);
+    }
+
+    public void notifyStateChanged() {
+        for (SignupViewModelListener listener : listeners) {
+            listener.stateChanged();
+        }
+    }
 }

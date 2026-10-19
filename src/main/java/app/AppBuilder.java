@@ -47,9 +47,6 @@ public class AppBuilder {
     // DAO version using local file storage
     final FileUserDataAccessObject userDataAccessObject = new FileUserDataAccessObject("users.csv", userFactory);
 
-    // DAO version using a shared external database
-    // final DBUserDataAccessObject userDataAccessObject = new DBUserDataAccessObject(userFactory);
-
     private SignupView signupView;
     private SignupViewModel signupViewModel;
     private LoginViewModel loginViewModel;
@@ -64,21 +61,21 @@ public class AppBuilder {
     public AppBuilder addSignupView() {
         signupViewModel = new SignupViewModel();
         signupView = new SignupView(signupViewModel);
-        cardPanel.add(signupView, signupView.getViewName());
+        cardPanel.add(signupView, SignupViewModel.VIEW_NAME);
         return this;
     }
 
     public AppBuilder addLoginView() {
         loginViewModel = new LoginViewModel();
         loginView = new LoginView(loginViewModel);
-        cardPanel.add(loginView, loginView.getViewName());
+        cardPanel.add(loginView, LoginViewModel.VIEW_NAME);
         return this;
     }
 
     public AppBuilder addLoggedInView() {
         loggedInViewModel = new LoggedInViewModel();
         loggedInView = new LoggedInView(loggedInViewModel);
-        cardPanel.add(loggedInView, loggedInView.getViewName());
+        cardPanel.add(loggedInView, LoggedInViewModel.VIEW_NAME);
         return this;
     }
 
@@ -105,8 +102,7 @@ public class AppBuilder {
     }
 
     public AppBuilder addChangePasswordUseCase() {
-        final ChangePasswordOutputBoundary changePasswordOutputBoundary = new ChangePasswordPresenter(viewManagerModel,
-                loggedInViewModel);
+        final ChangePasswordOutputBoundary changePasswordOutputBoundary = new ChangePasswordPresenter(loggedInViewModel);
 
         final ChangePasswordInputBoundary changePasswordInteractor =
                 new ChangePasswordInteractor(userDataAccessObject, changePasswordOutputBoundary, userFactory);
@@ -138,8 +134,8 @@ public class AppBuilder {
 
         application.add(cardPanel);
 
-        viewManagerModel.setState(signupView.getViewName());
-        viewManagerModel.firePropertyChange();
+        viewManagerModel.setState(SignupViewModel.VIEW_NAME);
+        viewManagerModel.notifyViewChanged();
 
         return application;
     }

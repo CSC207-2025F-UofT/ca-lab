@@ -4,28 +4,25 @@ import interface_adapter.login.LoginController;
 import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginViewModel;
 
+import interface_adapter.login.LoginViewModelListener;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 /**
  * The View for when the user is logging into the program.
  */
-public class LoginView extends JPanel implements ActionListener, PropertyChangeListener {
+public class LoginView extends JPanel implements ActionListener, LoginViewModelListener {
 
-    private final String viewName = "log in";
     private final LoginViewModel loginViewModel;
 
     private final JTextField usernameInputField = new JTextField(15);
-    private final JLabel usernameErrorField = new JLabel();
+    private final JLabel loginErrorField = new JLabel();
 
     private final JPasswordField passwordInputField = new JPasswordField(15);
-    private final JLabel passwordErrorField = new JLabel();
 
     private final JButton logIn;
     private final JButton cancel;
@@ -34,7 +31,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
     public LoginView(LoginViewModel loginViewModel) {
 
         this.loginViewModel = loginViewModel;
-        this.loginViewModel.addPropertyChangeListener(this);
+        this.loginViewModel.addListener(this);
 
         final JLabel title = new JLabel("Login Screen");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -119,7 +116,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
         this.add(title);
         this.add(usernameInfo);
-        this.add(usernameErrorField);
+        this.add(loginErrorField);
         this.add(passwordInfo);
         this.add(buttons);
     }
@@ -133,18 +130,13 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        final LoginState state = (LoginState) evt.getNewValue();
-        setFields(state);
-        usernameErrorField.setText(state.getLoginError());
+    public void stateChanged() {
+        setFields(loginViewModel.getState());
+        loginErrorField.setText(loginViewModel.getState().getLoginError());
     }
 
     private void setFields(LoginState state) {
         usernameInputField.setText(state.getUsername());
-    }
-
-    public String getViewName() {
-        return viewName;
     }
 
     public void setLoginController(LoginController loginController) {

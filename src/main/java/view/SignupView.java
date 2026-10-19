@@ -4,20 +4,18 @@ import interface_adapter.signup.SignupController;
 import interface_adapter.signup.SignupState;
 import interface_adapter.signup.SignupViewModel;
 
+import interface_adapter.signup.SignupViewModelListener;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 /**
  * The View for the Signup Use Case.
  */
-public class SignupView extends JPanel implements ActionListener, PropertyChangeListener {
-    private final String viewName = "sign up";
+public class SignupView extends JPanel implements ActionListener, SignupViewModelListener {
 
     private final SignupViewModel signupViewModel;
     private final JTextField usernameInputField = new JTextField(15);
@@ -31,7 +29,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
 
     public SignupView(SignupViewModel signupViewModel) {
         this.signupViewModel = signupViewModel;
-        signupViewModel.addPropertyChangeListener(this);
+        signupViewModel.addListener(this);
 
         final JLabel title = new JLabel(SignupViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -175,15 +173,10 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        final SignupState state = (SignupState) evt.getNewValue();
-        if (state.getUsernameError() != null) {
-            JOptionPane.showMessageDialog(this, state.getUsernameError());
+    public void stateChanged() {
+        if (signupViewModel.getState().getUsernameError() != null) {
+            JOptionPane.showMessageDialog(this, signupViewModel.getState().getUsernameError());
         }
-    }
-
-    public String getViewName() {
-        return viewName;
     }
 
     public void setSignupController(SignupController controller) {
